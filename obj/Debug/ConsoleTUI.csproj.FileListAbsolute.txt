@@ -1,0 +1,14 @@
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleTUI\bin\Debug\ConsoleTUI.exe
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleTUI\bin\Debug\ConsoleTUI.pdb
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.exe
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.pdb
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.csprojResolveAssemblyReference.cache
+E:\C#\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.exe
+E:\C#\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.pdb
+D:\C#\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.exe
+D:\C#\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.pdb
+D:\C#\ConsoleTUI\ConsoleTUI\bin\Debug\ConsoleTUI.exe
+D:\C#\ConsoleTUI\ConsoleTUI\bin\Debug\ConsoleTUI.pdb
+D:\C#\ConsoleTUI\ConsoleTUI\obj\Debug\ConsoleTUI.csprojResolveAssemblyReference.cache
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleToolkit\ConsoleTUI\obj\Debug\ConsoleTUI.exe
+C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleToolkit\ConsoleTUI\obj\Debug\ConsoleTUI.pdb
