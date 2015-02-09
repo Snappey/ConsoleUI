@@ -11,7 +11,7 @@ namespace ConsoleTUI
 
 
         string text = "testing";
-        ConsoleColor colour = ConsoleColor.Black;
+        ConsoleColor colour = ConsoleColor.Cyan;
  
         public Label(int width, int height, int posX, int posY,Base parent = null,int layer = 1)
         {
@@ -27,10 +27,11 @@ namespace ConsoleTUI
 
         public override void Paint()
         {
-            if (isDrawn) { }
+            //if (isDrawn) { Util.clearScreen(); }
             Console.SetCursorPosition(x,y);
             Console.ForegroundColor = colour;
             Console.Write(text);
+            isDrawn = true;
         }
 
         public void setText(string txt)
@@ -47,7 +48,7 @@ namespace ConsoleTUI
 
         public override void Refresh()
         {
-            Paint();
+            layoutManager.refreshScreen();
         }
     }
 }

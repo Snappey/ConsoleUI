@@ -9,34 +9,48 @@ namespace ConsoleTUI
     {
         public static List<ConsoleTUI.Elements.Base> panels = new List<ConsoleTUI.Elements.Base>();
 
+
         public static void registerElement(ConsoleTUI.Elements.Base element)
         {
             if (element != null)
             {
                 panels.Add(element);
             }
-            orderElements();
+           // orderElements();
+        }
+
+        public static void refreshScreen()
+        {
+            drawScreen();
         }
 
         private static void orderElements()
         {
             List<ConsoleTUI.Elements.Base> temp = new List<ConsoleTUI.Elements.Base>();
+            temp = panels;
             foreach(ConsoleTUI.Elements.Base element in panels)
             {
-                if (element.Equals(panels[0]))
-                { 
-                    temp.Add(element); 
-                }; // Add the first element to the list so we can compare the rest.
+                if (panels.Count <= 1) { 
+                    return;
+                } // If there is only one element just break the loop here and exit the function
 
-                for ( int i=0; i < temp.Count; i++)
+                for(int i=0; i < panels.Count - 1; i++)
                 {
-                    if (temp[i].z > element.z)
+                    if (element.z > temp[i].z)
                     {
-                        temp.Insert(i,element);
+                        temp.Insert(temp.FindIndex(a => temp[i] == temp[i]), temp[i]);
                     }
                 }
             }
             panels = temp; // Copy across ordered version
+        }
+
+        private static void drawScreen()
+        {
+            foreach(ConsoleTUI.Elements.Base element in panels)
+            {
+                element.Paint();
+            }
         }
     }
 }

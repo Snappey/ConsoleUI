@@ -25,7 +25,7 @@ namespace ConsoleTUI
 
         public override void Paint()    
         {
-            if (isDrawn) { Util.clearScreen(); }
+            //if (isDrawn) { Util.clearScreen(); }
             isDrawn = Util.drawRectangle(x, y, w, h, colour);
         }
 
@@ -37,7 +37,7 @@ namespace ConsoleTUI
 
         public override void Refresh()
         {
-            Paint();
+            layoutManager.refreshScreen();
         }
 
     }
