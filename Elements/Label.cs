@@ -27,7 +27,6 @@ namespace ConsoleTUI
 
         public override void Paint()
         {
-            //if (isDrawn) { Util.clearScreen(); }
             Console.SetCursorPosition(x,y);
             Console.ForegroundColor = colour;
             Console.Write(text);

@@ -30,17 +30,7 @@ namespace ConsoleTUI
             temp = panels;
             foreach(ConsoleTUI.Elements.Base element in panels)
             {
-                if (panels.Count <= 1) { 
-                    return;
-                } // If there is only one element just break the loop here and exit the function
 
-                for(int i=0; i < panels.Count - 1; i++)
-                {
-                    if (element.z > temp[i].z)
-                    {
-                        temp.Insert(temp.FindIndex(a => temp[i] == temp[i]), temp[i]);
-                    }
-                }
             }
             panels = temp; // Copy across ordered version
         }
@@ -51,6 +41,7 @@ namespace ConsoleTUI
             {
                 element.Paint();
             }
+            Console.SetCursorPosition(0, 0);
         }
     }
 }

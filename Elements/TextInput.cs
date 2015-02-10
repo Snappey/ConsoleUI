@@ -2,30 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI.Elements;
 
-namespace ConsoleTUI
+namespace ConsoleTUI.Elements
 {
-    public class Panel : Base
+    class TextInput : Base
     {
 
-        public Panel(int width, int height, int posX, int posY, Base parent = null,int layer = 1)
+        ConsoleColor backColour = ConsoleColor.DarkBlue;
+
+        public TextInput(int width, int height, int posX, int posY,Base parent = null,int layer = 1)
         {
             w = width;
             h = height;
             x = posX;
             y = posY;
-            isDrawn = false;
             Parent = parent;
-            if (parent == null) { z = layer; } else { z = layer + parent.z;  };
-
+            if (parent == null) { z = layer; } else { z = layer + parent.z; };
 
             Init();
         }
 
-        public override void Paint()    
+        public override void Paint()
         {
-            isDrawn = Util.drawRectangle(x, y, w, h, colour);
+            Util.drawRectangle(x - 1, y - 1, w + 2, h + 2, ConsoleColor.White);
+            Util.drawRectangle(x, y, w, h, backColour);
+            
         }
 
         public override void Init()
@@ -38,6 +39,5 @@ namespace ConsoleTUI
         {
             layoutManager.refreshScreen();
         }
-
     }
 }

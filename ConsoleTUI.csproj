@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Elements\Base.cs" />
     <Compile Include="Elements\Label.cs" />
+    <Compile Include="Elements\TextInput.cs" />
     <Compile Include="layoutManager.cs" />
     <Compile Include="Elements\Panel.cs" />
     <Compile Include="Main.cs" />
