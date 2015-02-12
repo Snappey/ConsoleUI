@@ -12,6 +12,7 @@ namespace ConsoleTUI
         public static bool input = true;
         public static ConsoleKeyInfo lastKey;
         public static int tabIndex;
+        public static int maxTabIndex;
 
         public static void registerElement(ConsoleTUI.Elements.Base element)
         {
@@ -58,7 +59,7 @@ namespace ConsoleTUI
             while(input)
             {
                 lastKey = keyboardInput();
-                Util.resetCursor();
+               //Util.resetCursor();
                if(lastKey.Key == ConsoleKey.Tab)
                {
                    nextSelectableElement();
@@ -73,23 +74,29 @@ namespace ConsoleTUI
 
         private static void nextSelectableElement()
         {
+            maxTabIndex = getLargestTabIndex();
             foreach(ConsoleTUI.Elements.Base element in panels)
             {
-                if (element.isSelectable == false) { return; }
+               if (element.isSelectable == false) { continue; }
+               if (element.isSelected == true) { element.isSelected = false; }
+               if (layoutManager.tabIndex == maxTabIndex) { layoutManager.tabIndex = 0; } // Reset tabIndex if we have reached the end
                if(element.tabIndex == (layoutManager.tabIndex + 1))
                {
-                   Console.SetCursorPosition(element.x+1, element.y+1);
+                   Console.SetCursorPosition(element.x, element.y);
+                   layoutManager.tabIndex += 1;
+                   element.isSelected = true;
+                   break;
                }
                else
                {
-                 return; // Dont move cursor
+                 continue; // Dont move cursor
                }
             }
         }
 
         private static ConsoleTUI.Elements.Base getSelectedElement()
         {
-            foreach(ConsoleTUI.Elements.TextInput element in panels )
+            foreach(ConsoleTUI.Elements.Base element in panels )
             {
                 if(element.isSelectable == true)
                 {
@@ -100,6 +107,33 @@ namespace ConsoleTUI
                 }
             }
             return null;
+        }
+
+        private static ConsoleTUI.Elements.Base workoutSelectedElement()
+        {
+            int cX = Console.CursorLeft;
+            int cY = Console.CursorTop;
+            foreach (ConsoleTUI.Elements.Base element in panels)
+            {
+                if (cX == element.x && cY == element.y)
+                {
+                    return element;
+                }
+            }
+            return null;
+        }
+
+        private static int getLargestTabIndex()
+        {
+            int tabIndex = 0;
+            foreach (ConsoleTUI.Elements.Base element in panels)
+            {
+                if (element.tabIndex > tabIndex)
+                {
+                    tabIndex = element.tabIndex;
+                }
+            }
+            return tabIndex;
         }
     }
 }

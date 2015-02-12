@@ -10,9 +10,8 @@ namespace ConsoleTUI.Elements
 
         ConsoleColor backColour = ConsoleColor.DarkBlue;
         public bool isSelected;
-        public int tabIndex;
 
-        public TextInput(int width, int height, int posX, int posY,Base parent = null,int layer = 1)
+        public TextInput(int width, int height, int posX, int posY,Base parent = null,int layer = 1,int index = 1)
         {
             w = width;
             h = height;
@@ -20,6 +19,7 @@ namespace ConsoleTUI.Elements
             y = posY;
             Parent = parent;
             isSelectable = true;
+            tabIndex = index;
             if (parent == null) { z = layer; } else { z = layer + parent.z; };
 
             Init();

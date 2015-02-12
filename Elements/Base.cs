@@ -20,6 +20,7 @@ namespace ConsoleTUI.Elements
         public bool isDrawn;
         public ConsoleColor colour = ConsoleColor.Gray;
         public bool isSelectable;
+        public bool isSelected;
         public int tabIndex = 0; // Not relevant if isSelectable is false
 
         public abstract void Paint();

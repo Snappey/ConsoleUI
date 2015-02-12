@@ -19,8 +19,11 @@ namespace ConsoleTUI
 
             Label moreText = new Label(20, 20, 20, 20, canvas);
 
-            TextInput input = new TextInput(20,2,10,10, canvas);
+            TextInput input = new TextInput(20,2,10,10, canvas,1,1);
 
+
+            Util.resetCursor();
+            Util.setConsoleOutput(false);
         }
     }
 

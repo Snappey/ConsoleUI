@@ -34,7 +34,21 @@ namespace ConsoleTUI
         public static void resetCursor()
         {
             Console.SetCursorPosition(0,0);
-            Console.CursorVisible = false;
+            //Console.CursorVisible = false;
+        }
+
+        public static System.IO.StringWriter str; // Used for toggling console output.
+        public static void setConsoleOutput(bool i)
+        {
+            if (i == false)
+            {
+                str = new System.IO.StringWriter();
+                Console.SetOut(str);
+            }
+            else
+            {
+                Console.SetOut(Console.Out);
+            }
         }
 
     }

@@ -17,3 +17,8 @@ C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleToolkit\ConsoleUI\obj\Debug\Cons
 C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleToolkit\ConsoleUI\bin\Debug\ConsoleTUI.exe
 C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleToolkit\ConsoleUI\bin\Debug\ConsoleTUI.pdb
 C:\Users\Jon\Desktop\Projects\ConsoleTUI\ConsoleToolkit\ConsoleUI\obj\Debug\ConsoleTUI.csprojResolveAssemblyReference.cache
+D:\C#\ConsoleUI-master\ConsoleUI-master\obj\Debug\ConsoleTUI.exe
+D:\C#\ConsoleUI-master\ConsoleUI-master\obj\Debug\ConsoleTUI.pdb
+D:\C#\ConsoleUI-master\ConsoleUI-master\bin\Debug\ConsoleTUI.exe
+D:\C#\ConsoleUI-master\ConsoleUI-master\bin\Debug\ConsoleTUI.pdb
+D:\C#\ConsoleUI-master\ConsoleUI-master\obj\Debug\ConsoleTUI.csprojResolveAssemblyReference.cache
