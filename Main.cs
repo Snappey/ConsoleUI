@@ -13,6 +13,7 @@ namespace ConsoleTUI
         {
 
             Console.WriteLine(Console.BufferWidth);
+            layoutManager.startKeyboardInput();
 
             Panel canvas = new Panel(Console.BufferWidth - 10, 21, 5, 2);
 
@@ -20,7 +21,6 @@ namespace ConsoleTUI
 
             TextInput input = new TextInput(20,2,10,10, canvas);
 
-            Console.ReadKey();
         }
     }
 

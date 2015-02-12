@@ -31,5 +31,11 @@ namespace ConsoleTUI
             return true;
         }
 
+        public static void resetCursor()
+        {
+            Console.SetCursorPosition(0,0);
+            Console.CursorVisible = false;
+        }
+
     }
 }

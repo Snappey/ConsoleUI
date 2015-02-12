@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI.Elements;
+using ConsoleTUI;
 
-namespace ConsoleTUI
+namespace ConsoleTUI.Elements
 {
     public class Panel : Base
     {
@@ -17,6 +17,7 @@ namespace ConsoleTUI
             y = posY;
             isDrawn = false;
             Parent = parent;
+            isSelectable = false;
             if (parent == null) { z = layer; } else { z = layer + parent.z;  };
 
 

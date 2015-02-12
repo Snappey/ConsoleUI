@@ -9,6 +9,8 @@ namespace ConsoleTUI.Elements
     {
 
         ConsoleColor backColour = ConsoleColor.DarkBlue;
+        public bool isSelected;
+        public int tabIndex;
 
         public TextInput(int width, int height, int posX, int posY,Base parent = null,int layer = 1)
         {
@@ -17,6 +19,7 @@ namespace ConsoleTUI.Elements
             x = posX;
             y = posY;
             Parent = parent;
+            isSelectable = true;
             if (parent == null) { z = layer; } else { z = layer + parent.z; };
 
             Init();
@@ -24,7 +27,7 @@ namespace ConsoleTUI.Elements
 
         public override void Paint()
         {
-            Util.drawRectangle(x - 1, y - 1, w + 2, h + 2, ConsoleColor.White);
+            Util.drawRectangle(x - 1, y - 1, w + 2, h + 2, ConsoleColor.DarkGray);
             Util.drawRectangle(x, y, w, h, backColour);
             
         }

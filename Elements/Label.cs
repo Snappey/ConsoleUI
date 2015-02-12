@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ConsoleTUI.Elements;
 
-namespace ConsoleTUI
+namespace ConsoleTUI.Elements
 {
     class Label : Base
     {
@@ -20,6 +20,7 @@ namespace ConsoleTUI
             x = posX;
             y = posY;
             Parent = parent;
+            isSelectable = false;
             if (parent == null) { z = layer; } else { z = layer + parent.z; };
 
             Init();

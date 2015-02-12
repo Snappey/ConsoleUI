@@ -19,6 +19,8 @@ namespace ConsoleTUI.Elements
         public Base Parent;
         public bool isDrawn;
         public ConsoleColor colour = ConsoleColor.Gray;
+        public bool isSelectable;
+        public int tabIndex = 0; // Not relevant if isSelectable is false
 
         public abstract void Paint();
         public abstract void Init();
