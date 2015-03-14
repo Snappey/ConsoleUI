@@ -27,6 +27,16 @@ namespace ConsoleTUI.Elements
         public abstract void Init();
         public abstract void Refresh();
 
+
+        public virtual void cursorRefresh()
+        {
+            int cX = Console.CursorLeft;
+            int cY = Console.CursorTop;
+            if (cX < x || cX > (x + w - 2) || cY < y || cY > (y + h)) { 
+                Console.SetCursorPosition(x, y); 
+            }
+        }
+
         public virtual void setPosition(int posX, int posY)
         {
             x = posX;

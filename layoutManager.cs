@@ -34,6 +34,27 @@ namespace ConsoleTUI
             threads.keyInput.Start();
         }
 
+        private static void keyThread()
+        {
+            while (input)
+            {
+                lastKey = keyboardInput();
+                //Util.resetCursor();
+                ConsoleTUI.Elements.Base element = getSelectedElement();
+                refreshCursorPos(element);
+                if (Util.consoleOutput == true) { continue; }
+                if (lastKey.Key == ConsoleKey.Enter)
+                {
+                    lockToElemenet(element);
+                }
+                if (lastKey.Key == ConsoleKey.Tab)
+                {
+                    unlockFromElement(element);
+                    nextSelectableElement();
+                }
+            }
+        }
+
         private static void orderElements()
         {
             List<ConsoleTUI.Elements.Base> temp = new List<ConsoleTUI.Elements.Base>();
@@ -52,19 +73,6 @@ namespace ConsoleTUI
                 element.Paint();
             }
             Util.resetCursor();
-        }
-
-        private static void keyThread()
-        {
-            while(input)
-            {
-                lastKey = keyboardInput();
-               //Util.resetCursor();
-               if(lastKey.Key == ConsoleKey.Tab)
-               {
-                   nextSelectableElement();
-               }
-            }
         }
 
         private static ConsoleKeyInfo keyboardInput()
@@ -109,6 +117,10 @@ namespace ConsoleTUI
             return null;
         }
 
+        /// <summary>
+        /// Works out what element is selected based on where the cursor is on the screen
+        /// </summary>
+        /// <returns>ConsoleTUI.Elements.Base Element</returns>
         private static ConsoleTUI.Elements.Base workoutSelectedElement()
         {
             int cX = Console.CursorLeft;
@@ -134,6 +146,23 @@ namespace ConsoleTUI
                 }
             }
             return tabIndex;
+        }
+
+        private static bool lockToElemenet(ConsoleTUI.Elements.Base element)
+        {
+            Util.setConsoleOutput(true);
+            return true;
+        }
+
+        private static bool unlockFromElement(ConsoleTUI.Elements.Base element)
+        {
+            Util.setConsoleOutput(false);
+            return true;
+        }
+
+        private static void refreshCursorPos(ConsoleTUI.Elements.Base element)
+        {
+            if (element != null) { element.cursorRefresh(); }
         }
     }
 }

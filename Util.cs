@@ -7,6 +7,9 @@ namespace ConsoleTUI
 {
     class Util
     {
+
+        public static bool consoleOutput;
+
         public static bool drawRectangle(int x, int y, int w, int h, ConsoleColor colour)
         {
             Console.BackgroundColor = colour;
@@ -38,17 +41,23 @@ namespace ConsoleTUI
         }
 
         public static System.IO.StringWriter str; // Used for toggling console output.
+        public static System.IO.TextWriter output;
+        private static int k = 0;
         public static void setConsoleOutput(bool i)
         {
+            if (k == 0) { output = Console.Out; } // Save the original Console output to a var the first time the function is ran
             if (i == false)
             {
                 str = new System.IO.StringWriter();
                 Console.SetOut(str);
+                consoleOutput = false;
             }
             else
             {
-                Console.SetOut(Console.Out);
+                Console.SetOut(output);
+                consoleOutput = true;
             }
+            k += 1;
         }
 
     }

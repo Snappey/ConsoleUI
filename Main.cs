@@ -21,6 +21,7 @@ namespace ConsoleTUI
 
             TextInput input = new TextInput(20,2,10,10, canvas,1,1);
 
+            TextInput moreInput = new TextInput(20, 2, 10, 15, canvas, 1, 2);
 
             Util.resetCursor();
             Util.setConsoleOutput(false);
