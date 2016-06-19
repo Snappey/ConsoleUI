@@ -26,6 +26,16 @@ namespace ConsoleTUI.Drawing
             ReturnCursorPos();
         }
 
+        public static void Text(int x, int y, string msg, ConsoleColor TextColor, ConsoleColor BackgroundColor=ConsoleColor.Black)
+        {
+            SaveCursorPos();
+            Console.SetCursorPosition(x,y);
+            SetForeground(TextColor);
+            SetBackground(BackgroundColor);
+            Console.Write(msg);
+            ReturnCursorPos();
+        }
+
         public static void SetBackground(ConsoleColor col)
         {
             Console.BackgroundColor = col;
