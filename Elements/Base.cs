@@ -17,11 +17,22 @@ namespace ConsoleTUI.Elements
         public int H;
         public bool PaintManual;
         public PaintEventArgs LatestPaintEventArgs;
+        public Base Parent;
 
         protected Base()
         {
             Handler.Add(this);
             Init?.Invoke(this, EventArgs.Empty);
+        }
+
+        public Base GetParent()
+        {
+            return Parent;
+        }
+
+        public void SetParent(Base pnl)
+        {
+            Parent = pnl;
         }
 
         public int[,] GetPos()
