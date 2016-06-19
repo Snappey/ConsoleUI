@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using ConsoleTUI;
+using ConsoleTUI.Drawing;
 using ConsoleTUI.Elements;
 
 namespace ConsoleTUI
@@ -11,20 +13,14 @@ namespace ConsoleTUI
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Cyan;
+           
+            Panel pnl = new Panel(5,5,25,10);
+            pnl.PaintOverride += delegate (object sender, PaintEventArgs eventArgs) { Console.WriteLine("Testing"); };
+            pnl.SetPaintManual(true);
 
-            Console.WriteLine(Console.BufferWidth);
-            layoutManager.startKeyboardInput();
 
-            Panel canvas = new Panel(Console.BufferWidth - 10, 21, 5, 2);
-
-            Label moreText = new Label(20, 20, 20, 20, canvas);
-
-            TextInput input = new TextInput(20,2,10,10, canvas,1,1);
-
-            TextInput moreInput = new TextInput(20, 2, 10, 15, canvas, 1, 2);
-
-            Util.resetCursor();
-            Util.setConsoleOutput(false);
+            Console.ReadKey();
         }
     }
 

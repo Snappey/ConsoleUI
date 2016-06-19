@@ -1,60 +1,152 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using ConsoleTUI.Manager;
 
 namespace ConsoleTUI.Elements
 {
-    /// <summary>
-    /// Base Class, all elements derive from this
-    /// </summary>
-   public abstract class Base
+    public abstract class Base
+    {
+        public event EventHandler<PaintEventArgs> Paint;
+        public event EventHandler<PaintEventArgs> PaintOverride;
+        public event EventHandler Init;
+
+        public int X;
+        public int Y;
+        public bool Selectable;
+        public bool Selected;
+        public int W;
+        public int H;
+        public bool PaintManual;
+        public PaintEventArgs LatestPaintEventArgs;
+
+        protected Base()
+        {
+            Handler.Add(this);
+            Init?.Invoke(this, EventArgs.Empty);
+        }
+
+        public int[,] GetPos()
+        {
+            return new int[X,Y];
+        }
+
+        public int GetX()
+        {
+            return X;
+        }
+
+        public int GetY()
+        {
+            return Y;
+        }
+
+        public bool IsSelected()
+        {
+            if (Selected)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsSelectable()
+        {
+            if (Selectable)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public int GetWidth()
+        {
+            return W;
+        }
+
+        public int GetHeight()
+        {
+            return H;
+        }
+
+        public int[,] GetSize()
+        {
+            return new int[W,H];
+        }
+
+        public void SetPos(int x, int y)
+        {
+            PaintEventArgs eventArgs = new PaintEventArgs();
+            if (x >= 0)
+            {
+                X = x;
+                eventArgs.XPositionModified = true;
+            }
+            if (y >= 0)
+            {
+                Y = y;
+                eventArgs.YPositionModified = true;
+            }
+            LatestPaintEventArgs = eventArgs;
+            Handler.Draw();
+        }
+
+        public void SetSize(int w, int h)
+        {
+            PaintEventArgs eventArgs = new PaintEventArgs();
+            if (w >= 0)
+            {
+                W = w;
+                eventArgs.WidthModified = true;
+            }
+            if (h >= 0)
+            {
+                H = h;
+                eventArgs.HeightModified = true;
+            }
+            LatestPaintEventArgs = eventArgs;
+            Handler.Draw();
+        }
+
+        public void SetPaintManual(bool paint)
+        {
+            if (paint)
+            {
+                PaintManual = true;
+                Handler.Draw();
+                return;
+            }
+            PaintManual = false;
+            Handler.Draw();
+        }
+        public virtual void OverridePaintPanel() { }
+        public abstract void PaintPanel(object obj, PaintEventArgs e);
+
+        public void PrePaint(PaintEventArgs e)
+        {
+            if (PaintManual)
+            {
+                PaintOverride?.Invoke(this, e);
+            }
+            else
+            {
+                Paint?.Invoke(this, e);
+            }  
+        }
+    }
+
+    public class PaintEventArgs : EventArgs
     {
 
-        public int w;
-        public int h;
-        public int x;
-        public int y;
-        public int z;
-        public Base Parent;
-        public bool isDrawn;
-        public ConsoleColor colour = ConsoleColor.Gray;
-        public bool isSelectable;
-        public bool isSelected;
-        public int tabIndex = 0; // Not relevant if isSelectable is false
+        public bool HeightModified;
+        public bool WidthModified;
+        public bool XPositionModified;
+        public bool YPositionModified;
 
-        public abstract void Paint();
-        public abstract void Init();
-        public abstract void Refresh();
-
-
-        public virtual void cursorRefresh()
+        public PaintEventArgs()
         {
-            int cX = Console.CursorLeft;
-            int cY = Console.CursorTop;
-            if (cX < x || cX > (x + w - 2) || cY < y || cY > (y + h)) { 
-                Console.SetCursorPosition(x, y); 
-            }
+            HeightModified = false;
+            WidthModified = false;
+            XPositionModified = false;
+            YPositionModified = false;
         }
-
-        public virtual void setPosition(int posX, int posY)
-        {
-            x = posX;
-            y = posY;
-            Refresh();
-        }
-       public virtual void setSize(int width, int height)
-       {
-           w = width;
-           h = height;
-           Refresh();
-       }
-        public virtual void setColour(ConsoleColor col)
-       {
-           colour = col;
-           Refresh();
-       }
-
-
     }
 }

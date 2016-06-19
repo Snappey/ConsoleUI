@@ -41,15 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Drawing\Draw.cs" />
+    <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\Base.cs" />
     <Compile Include="Elements\Label.cs" />
-    <Compile Include="Elements\TextInput.cs" />
-    <Compile Include="layoutManager.cs" />
-    <Compile Include="Elements\Panel.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Elements\Panel.cs" />
+    <Compile Include="Manager\Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Threads.cs" />
-    <Compile Include="Util.cs" />
+    <Compile Include="Elements\TextEntry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Elements\ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
