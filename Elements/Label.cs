@@ -2,19 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ConsoleTUI.Drawing;
+using ConsoleTUI.Manager;
 
 namespace ConsoleTUI.Elements
 {
     public class Label : Base
     {
-        public Label()
+        private string _string;
+
+        public Label(int x, int y, string text, Base Parent=null)
         {
-            throw new System.NotImplementedException();
+            if (Parent != null) { SetParent(Parent);}
+            Paint += PaintPanel;
+            SetPos(x,y);
+            SetText(text);
         }
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            Draw.Text(X, Y, _string, ConsoleColor.Black, GetParent().GetBackgroundColor());
         }
+
+        public string GetText()
+        {
+            return _string;
+        }
+
+        public void SetText(string txt)
+        {
+            _string = txt;
+            Handler.Draw();
+        }
+
     }
 }

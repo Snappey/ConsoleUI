@@ -18,6 +18,8 @@ namespace ConsoleTUI.Elements
         public bool PaintManual;
         public PaintEventArgs LatestPaintEventArgs;
         public Base Parent;
+        public ConsoleColor TextColor;
+        public ConsoleColor BkgColor;
 
         protected Base()
         {
@@ -85,6 +87,7 @@ namespace ConsoleTUI.Elements
 
         public void SetPos(int x, int y)
         {
+            if (GetParent() != null) { x = GetParent().X + x; y = GetParent().Y + y; }
             PaintEventArgs eventArgs = new PaintEventArgs();
             if (x >= 0)
             {
@@ -115,6 +118,26 @@ namespace ConsoleTUI.Elements
             }
             LatestPaintEventArgs = eventArgs;
             Handler.Draw();
+        }
+
+        public ConsoleColor GetTextColor()
+        {
+            return TextColor;
+        }
+
+        public void SetTextColor(ConsoleColor col)
+        {
+            TextColor = col;
+        }
+
+        public ConsoleColor GetBackgroundColor()
+        {
+            return BkgColor;
+        }
+
+        public void SetBackgroundColor(ConsoleColor col)
+        {
+            BkgColor = TextColor;
         }
 
         public void SetPaintManual(bool paint)

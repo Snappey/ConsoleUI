@@ -13,11 +13,10 @@ namespace ConsoleTUI
     {
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.Cyan;
            
-            Panel pnl = new Panel(5,5,25,10);
-            pnl.PaintOverride += delegate (object sender, PaintEventArgs eventArgs) { Console.WriteLine("Testing"); };
-            pnl.SetPaintManual(true);
+            Panel pnl = new Panel(5,5,90,15);
+    
+            Label lbl = new Label(2,2,"Testing", pnl);
 
 
             Console.ReadKey();
