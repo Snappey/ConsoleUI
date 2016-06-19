@@ -2,53 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI.Elements;
+using ConsoleTUI.Drawing;
+using ConsoleTUI.Manager;
 
 namespace ConsoleTUI.Elements
 {
-    class Label : Base
+    public class Label : Base
     {
+        private string _string;
 
-
-        string text = "testing";
-        ConsoleColor colour = ConsoleColor.Cyan;
- 
-        public Label(int width, int height, int posX, int posY,Base parent = null,int layer = 1)
+        public Label(int x, int y, string text, Base Parent=null)
         {
-            w = width;
-            h = height;
-            x = posX;
-            y = posY;
-            Parent = parent;
-            isSelectable = false;
-            if (parent == null) { z = layer; } else { z = layer + parent.z; };
-
-            Init();
+            if (Parent != null) { SetParent(Parent);}
+            Paint += PaintPanel;
+            SetPos(x,y);
+            SetText(text);
         }
 
-        public override void Paint()
+        public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            Console.SetCursorPosition(x,y);
-            Console.ForegroundColor = colour;
-            Console.Write(text);
-            isDrawn = true;
+            Draw.Text(X, Y, _string, ConsoleColor.Black, GetParent().GetBackgroundColor());
         }
 
-        public void setText(string txt)
+        public string GetText()
         {
-            text = txt;
-            Refresh();
+            return _string;
         }
 
-        public override void Init()
+        public void SetText(string txt)
         {
-            layoutManager.registerElement(this);
-            Paint();
+            _string = txt;
+            Handler.Draw();
         }
 
-        public override void Refresh()
-        {
-            layoutManager.refreshScreen();
-        }
     }
 }

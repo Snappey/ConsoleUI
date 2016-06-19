@@ -2,43 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI;
+using ConsoleTUI.Drawing;
 
 namespace ConsoleTUI.Elements
 {
     public class Panel : Base
-    {
-
-        public Panel(int width, int height, int posX, int posY, Base parent = null,int layer = 1)
+    { 
+        public Panel(int x, int y, int w, int h, Base Parent=null)
         {
-            w = width;
-            h = height;
-            x = posX;
-            y = posY;
-            isDrawn = false;
-            Parent = parent;
-            isSelectable = false;
-            if (parent == null) { z = layer; } else { z = layer + parent.z;  };
-
-
-            Init();
+            if (Parent != null) { SetParent(Parent); }
+            Paint += PaintPanel;
+            SetPos(x, y);
+            SetSize(w, h);
+            //SetBackgroundColor(ConsoleColor.Gray);
+            Selectable = false; // Panels cant be selected
         }
 
-        public override void Paint()    
+        public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            isDrawn = Util.drawRectangle(x, y, w, h, colour);
+            Draw.SetBackground(ConsoleColor.Gray);
+                Draw.Rect(X,Y, W,H);
+            Draw.ResetColours();
         }
-
-        public override void Init()
-        {
-            layoutManager.registerElement(this);
-            Paint();
-        }
-
-        public override void Refresh()
-        {
-            layoutManager.refreshScreen();
-        }
-
     }
 }
