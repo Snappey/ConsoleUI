@@ -44,5 +44,7 @@ Temporary Items
 
 # VS Generated Directions
 bin/*
+bin/Debug/*
+Elements/ClassDiagram1.cd
 .vs/*
 obj/*
