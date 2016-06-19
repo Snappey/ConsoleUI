@@ -44,3 +44,5 @@ Temporary Items
 
 # VS Generated Directions
 bin/*
+.vs/*
+obj/*
