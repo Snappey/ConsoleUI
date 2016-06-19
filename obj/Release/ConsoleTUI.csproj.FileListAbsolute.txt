@@ -1,4 +1,0 @@
-C:\Users\Jon\Source\Repos\ConsoleUI\bin\Release\ConsoleTUI.exe
-C:\Users\Jon\Source\Repos\ConsoleUI\bin\Release\ConsoleTUI.pdb
-C:\Users\Jon\Source\Repos\ConsoleUI\obj\Release\ConsoleTUI.exe
-C:\Users\Jon\Source\Repos\ConsoleUI\obj\Release\ConsoleTUI.pdb
