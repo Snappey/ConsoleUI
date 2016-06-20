@@ -17,11 +17,14 @@ namespace ConsoleTUI.Elements
             Paint += PaintPanel;
             SetPos(x,y);
             SetText(text);
+            Selectable = false;
         }
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
             Draw.Text(X, Y, _string, ConsoleColor.Black, GetParent().GetBackgroundColor());
+            Draw.ResetColours();
+            
         }
 
         public string GetText()

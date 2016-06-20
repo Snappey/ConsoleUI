@@ -14,7 +14,7 @@ namespace ConsoleTUI.Elements
             Paint += PaintPanel;
             SetPos(x, y);
             SetSize(w, h);
-            //SetBackgroundColor(ConsoleColor.Gray);
+            SetBackgroundColor(ConsoleColor.Gray);
             Selectable = false; // Panels cant be selected
         }
 
