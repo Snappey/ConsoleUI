@@ -9,7 +9,7 @@ namespace ConsoleTUI.Elements
 {
     public class Label : Base
     {
-        private string _string;
+        protected string _string;
 
         public Label(int x, int y, string text, Base Parent=null)
         {

@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using ConsoleTUI.Drawing;
 
 namespace ConsoleTUI.Elements
 {
     public class Panel : Base
     { 
-        public Panel(int x, int y, int w, int h, Base Parent=null)
+        public Panel(int x, int y, int w, int h, Base parent=null)
         {
-            if (Parent != null) { SetParent(Parent); }
+            if (parent != null) { SetParent(parent); }
             Paint += PaintPanel;
             SetPos(x, y);
             SetSize(w, h);
