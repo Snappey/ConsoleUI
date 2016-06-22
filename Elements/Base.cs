@@ -137,7 +137,7 @@ namespace ConsoleTUI.Elements
 
         public void SetBackgroundColor(ConsoleColor col)
         {
-            BkgColor = TextColor;
+            BkgColor = col;
         }
 
         public void SetPaintManual(bool paint)

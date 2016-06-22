@@ -44,7 +44,9 @@
     <Compile Include="Drawing\Draw.cs" />
     <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\Base.cs" />
+    <Compile Include="Elements\Footer.cs" />
     <Compile Include="Elements\Label.cs" />
+    <Compile Include="Hooks.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Elements\Panel.cs" />
     <Compile Include="Manager\Manager.cs" />
