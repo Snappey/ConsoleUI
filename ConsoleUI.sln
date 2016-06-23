@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTUI", "ConsoleTUI.csproj", "{D892E20A-943B-43F9-8856-28281DAF91B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{83FC6D8B-36F0-41AC-9668-7B65AC53F8DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D892E20A-943B-43F9-8856-28281DAF91B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D892E20A-943B-43F9-8856-28281DAF91B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D892E20A-943B-43F9-8856-28281DAF91B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83FC6D8B-36F0-41AC-9668-7B65AC53F8DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83FC6D8B-36F0-41AC-9668-7B65AC53F8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83FC6D8B-36F0-41AC-9668-7B65AC53F8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83FC6D8B-36F0-41AC-9668-7B65AC53F8DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
