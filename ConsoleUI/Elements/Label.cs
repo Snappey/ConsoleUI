@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI.Drawing;
-using ConsoleTUI.Manager;
+using ConsoleUI.Drawing;
+using ConsoleUI.Manager;
 
-namespace ConsoleTUI.Elements
+namespace ConsoleUI.Elements
 {
     public class Label : Base
     {

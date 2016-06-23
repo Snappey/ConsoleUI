@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI.Drawing;
+using ConsoleUI.Drawing;
 
-namespace ConsoleTUI.Elements
+namespace ConsoleUI.Elements
 {
     public class Button : Panel
     {
-        public Button(int x, int y, int w, int h, Base parent=null) : base(x, y, w, h, parent)
+        public Button(int x, int y, int w, int h, Base Parent=null) : base(x, y, w, h, Parent)
         {
             Paint += PaintPanel;
         }

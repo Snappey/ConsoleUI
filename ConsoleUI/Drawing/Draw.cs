@@ -1,9 +1,9 @@
 ﻿using System;
 // ReSharper disable InconsistentNaming
 
-namespace ConsoleTUI.Drawing
+namespace ConsoleUI.Drawing
 {
-    static class Draw
+    public static class Draw
     {
         private const ConsoleColor BACKGROUND_COLOUR = ConsoleColor.Black;
         private const ConsoleColor FOREGROUND_COLOUR = ConsoleColor.White;

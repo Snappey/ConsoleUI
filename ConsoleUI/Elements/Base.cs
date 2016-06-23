@@ -1,7 +1,7 @@
 ﻿using System;
-using ConsoleTUI.Manager;
+using ConsoleUI.Manager;
 
-namespace ConsoleTUI.Elements
+namespace ConsoleUI.Elements
 {
     public abstract class Base
     {
