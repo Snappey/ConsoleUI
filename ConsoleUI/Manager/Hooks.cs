@@ -19,7 +19,7 @@ namespace ConsoleUI.Manager
         {
             WindowWidthChanged += delegate { Handler.Draw(); };
             WindowHeightChanged += delegate { Handler.Draw(); };
-            //WindowHasScrolled += delegate { Handler.Draw(); };
+            WindowHasScrolled += delegate { Handler.Draw(); };
             int w = Console.WindowWidth;
             int h = Console.WindowHeight;
             int y = Console.WindowTop;
