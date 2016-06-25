@@ -6,7 +6,7 @@ using ConsoleUI.Elements;
 
 namespace ConsoleUI.Manager
 {
-    static class Handler
+    public static class Handler
     {
         public static List<Base> Panels = new List<Base>();
 
@@ -15,6 +15,7 @@ namespace ConsoleUI.Manager
             try
             {
                 Panels.Add(panel);
+                
             }
             catch
             {
@@ -23,12 +24,46 @@ namespace ConsoleUI.Manager
             return true;
         }
 
+        public static bool Remove(Base panel)
+        {
+            try
+            {
+                foreach (KeyValuePair<Base,Base> child in panel.GetChildren())
+                {
+                    child.Key.Remove();
+                }
+                Panels.Remove(panel);
+                panel = null;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public static void Draw()
         {
             Drawing.Draw.ResetConsole();
             foreach (Base pnl in Panels)
             {
                 pnl.PrePaint(pnl.LatestPaintEventArgs);
+            }
+        }
+
+        public static void DrawElement(Base pnl)
+        {
+            pnl.PrePaint(pnl.LatestPaintEventArgs);
+            foreach (Base child in pnl.GetChildren().Keys)
+            {
+                if (child.GetChildren().Count != 0)
+                {
+                    DrawElement(child); // Dont bother drawing a child if it has more children, since we call for that panels draw initially
+                }
+                else
+                {
+                    child.PrePaint(child.LatestPaintEventArgs);
+                }
             }
         }
        
