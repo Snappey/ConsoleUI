@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleTUI.Elements;
+using ConsoleUI.Elements;
 
-namespace ConsoleTUI
+namespace ConsoleUI
 {
     public class TextEntry : Label
     {

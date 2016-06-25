@@ -1,9 +1,9 @@
 ﻿using System;
 // ReSharper disable InconsistentNaming
 
-namespace ConsoleTUI.Drawing
+namespace ConsoleUI.Drawing
 {
-    static class Draw
+    public static class Draw
     {
         private const ConsoleColor BACKGROUND_COLOUR = ConsoleColor.Black;
         private const ConsoleColor FOREGROUND_COLOUR = ConsoleColor.White;
@@ -14,12 +14,16 @@ namespace ConsoleTUI.Drawing
         {
             SaveCursorPos();
             Console.SetCursorPosition(x,y);
-            for (int i = 0; i < h; i++)
+            for (int i = 0; i <= h; i++)
             {
-                for (int k = 0; k < w; k++)
+                for (int k = 0; k <= w; k++)
                 {
                     Console.Write(" ");
                 }
+
+                if (i == h)
+                {
+                    break; }
                 Console.WriteLine();
                 Console.SetCursorPosition(x, y + i);
             }

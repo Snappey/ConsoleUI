@@ -1,7 +1,9 @@
 ﻿using System;
-using ConsoleTUI.Manager;
+using System.Collections.Generic;
+using System.Linq;
+using ConsoleUI.Manager;
 
-namespace ConsoleTUI.Elements
+namespace ConsoleUI.Elements
 {
     public abstract class Base
     {
@@ -18,8 +20,8 @@ namespace ConsoleTUI.Elements
         public bool PaintManual;
         public PaintEventArgs LatestPaintEventArgs;
         public Base Parent;
-        public ConsoleColor TextColor;
-        public ConsoleColor BkgColor;
+        public ConsoleColor BkgColor = ConsoleColor.Black;
+        public Dictionary<Base, Base> Children = new Dictionary<Base, Base>(); // Bit of a lazy way to solve this problem, Ill come back to it
 
         protected Base()
         {
@@ -35,6 +37,26 @@ namespace ConsoleTUI.Elements
         public void SetParent(Base pnl)
         {
             Parent = pnl;
+        }
+
+        public void RemoveParent()
+        {
+            Parent = null;
+        }
+
+        public Dictionary<Base, Base> GetChildren()
+        {
+            return Children;
+        }
+
+        public void AddChild(Base pnl)
+        {
+            Children.Add(pnl, pnl);
+        }
+
+        public void RemoveChild(Base pnl)
+        {
+            Children.Remove(pnl); // So I dont have to work out the index of the given panel
         }
 
         public int[,] GetPos()
@@ -120,16 +142,6 @@ namespace ConsoleTUI.Elements
             Handler.Draw();
         }
 
-        public ConsoleColor GetTextColor()
-        {
-            return TextColor;
-        }
-
-        public void SetTextColor(ConsoleColor col)
-        {
-            TextColor = col;
-        }
-
         public ConsoleColor GetBackgroundColor()
         {
             return BkgColor;
@@ -140,16 +152,21 @@ namespace ConsoleTUI.Elements
             BkgColor = col;
         }
 
+        public void Remove()
+        {
+            Handler.Remove(this);
+        }
+
         public void SetPaintManual(bool paint)
         {
             if (paint)
             {
                 PaintManual = true;
-                Handler.Draw();
+                Handler.DrawElement(this);
                 return;
             }
             PaintManual = false;
-            Handler.Draw();
+            Handler.DrawElement(this);
         }
         public virtual void OverridePaintPanel() { }
         public abstract void PaintPanel(object obj, PaintEventArgs e);

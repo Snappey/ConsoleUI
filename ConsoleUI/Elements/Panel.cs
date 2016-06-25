@@ -1,10 +1,14 @@
 ﻿using System;
-using ConsoleTUI.Drawing;
+using ConsoleUI.Drawing;
 
-namespace ConsoleTUI.Elements
+namespace ConsoleUI.Elements
 {
     public class Panel : Base
-    { 
+    {
+        public Panel()
+        {
+        }
+
         public Panel(int x, int y, int w, int h, Base parent=null)
         {
             if (parent != null) { SetParent(parent); }
