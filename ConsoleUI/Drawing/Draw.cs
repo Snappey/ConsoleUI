@@ -14,12 +14,16 @@ namespace ConsoleUI.Drawing
         {
             SaveCursorPos();
             Console.SetCursorPosition(x,y);
-            for (int i = 0; i < h; i++)
+            for (int i = 0; i <= h; i++)
             {
-                for (int k = 0; k < w; k++)
+                for (int k = 0; k <= w; k++)
                 {
                     Console.Write(" ");
                 }
+
+                if (i == h)
+                {
+                    break; }
                 Console.WriteLine();
                 Console.SetCursorPosition(x, y + i);
             }
