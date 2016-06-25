@@ -47,7 +47,8 @@
     <Compile Include="Elements\Label.cs" />
     <Compile Include="Elements\Panel.cs" />
     <Compile Include="Elements\TextEntry.cs" />
-    <Compile Include="Hooks.cs" />
+    <Compile Include="Manager\Hooks.cs" />
+    <Compile Include="Manager\Keys.cs" />
     <Compile Include="Manager\Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
