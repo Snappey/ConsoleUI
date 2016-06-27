@@ -40,6 +40,7 @@ namespace ConsoleUI.Elements
         public void SetParent(Base pnl)
         {
             Parent = pnl;
+            pnl.AddChild(this);
         }
 
         public void RemoveParent()
