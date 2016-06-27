@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using ConsoleUI.Elements;
 
 namespace ConsoleUI.Manager
 {
@@ -19,9 +19,9 @@ namespace ConsoleUI.Manager
         {
             while (true)
             {
-                LastKeyInfo = Console.ReadKey();
-                ConsoleKeyPressed?.Invoke(null, new KeyEventArgs(LastKeyInfo));                 
-                // CPU usage spikes from 1 to highs of 10 when a user is typing relativly quickly
+                LastKeyInfo = Console.ReadKey(true);
+                ConsoleKeyPressed?.Invoke(null, new KeyEventArgs(LastKeyInfo));
+                // CPU usage spikes from 1 to highs of 10 when a user is typing relatively quickly
             }
         }
 
@@ -30,7 +30,16 @@ namespace ConsoleUI.Manager
         {
             _Thread = new Thread(CreateKeys);
             _Thread.Start();
+            ConsoleKeyPressed += SelectionHandle;
             return _Thread;
+        }
+
+        private static void SelectionHandle(object Obj, KeyEventArgs keyinfo)
+        {
+            if (keyinfo.Key.Key != ConsoleKey.Tab) { return; } //If its not tab we're not interested
+
+            
+
         }
 
         public static ConsoleKeyInfo GetPressedKey()
@@ -43,6 +52,5 @@ namespace ConsoleUI.Manager
             public ConsoleKeyInfo Key;
             public KeyEventArgs(ConsoleKeyInfo key) { Key = key; }
         }
-
     }
 }
