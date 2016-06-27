@@ -8,7 +8,7 @@ namespace ConsoleUI.Elements
 {
     public class Button : Base
     {
-        private static int i = 0;
+        public event EventHandler OnClick;
         public Button(int x, int y, int w, int h, Base Parent=null)
         {
             if (Parent != null) { SetParent(Parent); }
@@ -16,13 +16,19 @@ namespace ConsoleUI.Elements
             SetPos(x, y);
             SetSize(w, h);
             SetSelectable(true);
+            SetBackgroundColor(ConsoleColor.Cyan);
+            OnClick += delegate(object sender, EventArgs args) {  };
+        }
+
+        public void DoClick()
+        {
+            OnClick.Invoke(this, EventArgs.Empty);
         }
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            i++;
             ConsoleColor col;
-            if (HasFocus)
+            if(HasFocus)
             {
                 col = ConsoleColor.DarkBlue;
             }

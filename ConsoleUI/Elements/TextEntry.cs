@@ -6,9 +6,9 @@ using ConsoleUI.Elements;
 
 namespace ConsoleUI.Elements
 {
-    public class TextEntry : Label
+    public class TextEntry : Button
     {
-        public TextEntry(int x, int y, string text, Base Parent = null) : base(x, y, text, Parent)
+        public TextEntry(int x, int y, int w, Base Parent = null) : base(x, y, w,3, Parent)
         {
         }
     }

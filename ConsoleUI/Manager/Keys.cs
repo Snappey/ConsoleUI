@@ -30,16 +30,26 @@ namespace ConsoleUI.Manager
         {
             _Thread = new Thread(CreateKeys);
             _Thread.Start();
-            ConsoleKeyPressed += SelectionHandle;
+            ConsoleKeyPressed += SelectionHandle; 
             return _Thread;
         }
 
         private static void SelectionHandle(object Obj, KeyEventArgs keyinfo)
         {
-            if (keyinfo.Key.Key != ConsoleKey.Tab) { return; } //If its not tab we're not interested
-
-            
-
+            if (keyinfo.Key.Key == ConsoleKey.Tab)
+            {
+                Base prevpnl = Handler.GetSelectedPanel();
+                Base pnl = Handler.GetNextSelectablePanel(prevpnl);
+                pnl.GiveFocus();
+                Handler.DrawElement(pnl);
+                Handler.DrawElement(prevpnl);
+            }
+            else if (keyinfo.Key.Key == ConsoleKey.Enter)
+            {
+                Button pnl = (Button)Handler.GetSelectedPanel(); // Eeeeeeh might be sketchy, but anything which is selectable currently is related to Button
+                pnl.DoClick();
+                Handler.DrawElement(pnl);
+            }
         }
 
         public static ConsoleKeyInfo GetPressedKey()

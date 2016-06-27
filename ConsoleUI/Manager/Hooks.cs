@@ -19,7 +19,7 @@ namespace ConsoleUI.Manager
         {
             WindowWidthChanged += delegate { Handler.Draw(); };
             WindowHeightChanged += delegate { Handler.Draw(); };
-            //WindowHasScrolled += delegate { Handler.Draw(); };
+            WindowHasScrolled += delegate { Handler.Draw(); };
             int w = Console.WindowWidth;
             int h = Console.WindowHeight;
             int y = Console.WindowTop;
@@ -28,7 +28,7 @@ namespace ConsoleUI.Manager
                 Thread.Sleep(500);
                 if (Console.WindowWidth != w) { WindowWidthChanged.Invoke(null, EventArgs.Empty); w = Console.WindowWidth; }
                 if (Console.WindowHeight != h) { WindowHeightChanged.Invoke(null, EventArgs.Empty); h = Console.WindowHeight; }
-                if (Console.WindowTop != y) {  WindowHasScrolled.Invoke(null, EventArgs.Empty); y = Console.WindowTop; }
+                if (Console.WindowTop != y) { WindowHasScrolled.Invoke(null, EventArgs.Empty); y = Console.WindowTop; }
             }
         }
 
