@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ConsoleUI.Elements;
 
-namespace ConsoleUI
+namespace ConsoleUI.Elements
 {
     public class TextEntry : Label
     {
