@@ -6,18 +6,33 @@ using ConsoleUI.Drawing;
 
 namespace ConsoleUI.Elements
 {
-    public class Button : Panel
+    public class Button : Base
     {
-        public Button(int x, int y, int w, int h, Base Parent=null) : base(x, y, w, h, Parent)
+        private static int i = 0;
+        public Button(int x, int y, int w, int h, Base Parent=null)
         {
+            if (Parent != null) { SetParent(Parent); }
             Paint += PaintPanel;
+            SetPos(x, y);
+            SetSize(w, h);
+            SetSelectable(true);
         }
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            Draw.SetBackground(ConsoleColor.Cyan);
-            Draw.Rect(X, Y, W, H);
+            i++;
+            ConsoleColor col;
+            if (HasFocus)
+            {
+                col = ConsoleColor.DarkBlue;
+            }
+            else
+            {
+               col = ConsoleColor.Cyan;
+            }            
+            Draw.Rect(X, Y, W, H, col);
             Draw.ResetColours();
+            
         }
     }
 }
