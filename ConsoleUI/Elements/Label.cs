@@ -14,7 +14,7 @@ namespace ConsoleUI.Elements
 
         public Label(int x, int y, string text, Base Parent=null)
         {
-            if (Parent != null) { SetParent(Parent); Parent.AddChild(this); }
+            if (Parent != null) { SetParent(Parent); }
             Paint += PaintPanel;
             SetPos(x,y);
             SetText(text);

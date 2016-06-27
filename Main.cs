@@ -24,18 +24,23 @@ namespace ConsoleTUI
             Label lbl = new Label(2,2,"Testing", pnl);
             lbl.SetTextColor(ConsoleColor.Black);
 
-            Keys.ConsoleKeyPressed += delegate(object sender, Keys.KeyEventArgs eventArgs) { p++; lbl.SetText(p.ToString()); };
+            //Keys.ConsoleKeyPressed += delegate(object sender, Keys.KeyEventArgs eventArgs) { p++; lbl.SetText(p.ToString()); };
 
             Button btn = new Button(2,6,20,5, pnl);
+            btn.OnClick += delegate(object sender, EventArgs eventArgs) { lbl.SetText("Test#1"); };
+
+            Button btn2 = new Button(24, 6, 20, 5, pnl);
+            btn2.OnClick += delegate(object sender, EventArgs eventArgs) {  lbl.SetText("LOL"); };
+
+            Button btn3 = new Button(46, 6, 20, 5, pnl);
+            btn3.OnClick += delegate(object sender, EventArgs eventArgs) { lbl.SetText("Asd"); };
 
             for (int i = 0; i < Console.BufferHeight; i++)
             {
                 Label dbg = new Label(0, i, i.ToString());
             }
 
-          //  Console.CursorVisible = false;
-
-            Console.ReadKey();
+            Console.CursorVisible = false;
         }
 
         private static void Init()

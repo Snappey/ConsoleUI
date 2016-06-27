@@ -10,9 +10,10 @@ namespace ConsoleUI.Drawing
 
         private static int[] CursorPos = new int[2];
 
-        public static void Rect(int x, int y, int w, int h)
+        public static void Rect(int x, int y, int w, int h, ConsoleColor RectColor)
         {
             SaveCursorPos();
+            Console.BackgroundColor = RectColor;
             Console.SetCursorPosition(x,y);
             for (int i = 0; i <= h; i++)
             {

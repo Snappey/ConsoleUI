@@ -28,7 +28,7 @@ namespace ConsoleUI.Manager
                 Thread.Sleep(500);
                 if (Console.WindowWidth != w) { WindowWidthChanged.Invoke(null, EventArgs.Empty); w = Console.WindowWidth; }
                 if (Console.WindowHeight != h) { WindowHeightChanged.Invoke(null, EventArgs.Empty); h = Console.WindowHeight; }
-                if (Console.WindowTop != y) {  WindowHasScrolled.Invoke(null, EventArgs.Empty); y = Console.WindowTop; }
+                if (Console.WindowTop != y) { WindowHasScrolled.Invoke(null, EventArgs.Empty); y = Console.WindowTop; }
             }
         }
 

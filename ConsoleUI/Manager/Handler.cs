@@ -9,13 +9,14 @@ namespace ConsoleUI.Manager
     public static class Handler
     {
         public static List<Base> Panels = new List<Base>();
+        public static List<Base> SelectablePanels = new List<Base>();
 
         public static bool Add(Base panel)
         {
             try
             {
                 Panels.Add(panel);
-                
+                if (panel.IsSelectable()) { SelectablePanels.Add(panel); } // Dont think this is needed, left just in case
             }
             catch
             {
@@ -66,6 +67,27 @@ namespace ConsoleUI.Manager
                 }
             }
         }
-       
+
+        public static Base GetSelectedPanel()
+        {
+            foreach (Base pnl in SelectablePanels)
+            {
+                if (pnl.HasFocus)
+                {
+                    return pnl;
+                }
+            }
+            return SelectablePanels[0];
+        }
+
+        public static Base GetNextSelectablePanel(Base pnl)
+        {
+            int i = SelectablePanels.IndexOf(pnl);
+            if (i+1 >= SelectablePanels.Count)
+            {
+                return SelectablePanels[0]; // the index is at the end, set the focus to the start
+            }
+            return SelectablePanels[i + 1];
+        }
     }
 }

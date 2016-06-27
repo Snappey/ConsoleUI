@@ -14,9 +14,8 @@ namespace ConsoleUI.Elements
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            Draw.SetBackground(ConsoleColor.DarkGray);
-                Draw.Rect(X, Console.WindowHeight - 1, W, H);
-                //Draw.Text(X, Y, GetText(), TextColor);
+            Draw.Rect(X, Console.WindowHeight - 1, W, H, ConsoleColor.DarkGray);
+            //Draw.Text(X, Y, GetText(), TextColor);
             Draw.ResetColours();
         }
     }
