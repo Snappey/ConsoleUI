@@ -16,7 +16,7 @@ namespace ConsoleUI.Manager
             try
             {
                 Panels.Add(panel);
-                if (panel.IsSelectable()) { SelectablePanels.Add(panel); } // Dont think this is need, left just in case
+                if (panel.IsSelectable()) { SelectablePanels.Add(panel); } // Dont think this is needed, left just in case
             }
             catch
             {

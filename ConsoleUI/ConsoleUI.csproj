@@ -49,7 +49,7 @@
     <Compile Include="Elements\TextEntry.cs" />
     <Compile Include="Manager\Hooks.cs" />
     <Compile Include="Manager\Keys.cs" />
-    <Compile Include="Manager\Manager.cs" />
+    <Compile Include="Manager\Handler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
