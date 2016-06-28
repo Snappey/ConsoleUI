@@ -17,7 +17,7 @@ namespace ConsoleUI.Elements
             SetSize(w, h);
             SetSelectable(true);
             SetBackgroundColor(ConsoleColor.Cyan);
-            OnClick += delegate(object sender, EventArgs args) {  };
+            OnClick += delegate(object sender, EventArgs args) { Console.Beep(); };
         }
 
         public void DoClick()
