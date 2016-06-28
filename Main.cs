@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading;
-using ConsoleUI.Drawing;
+using System;
 using ConsoleUI.Elements;
 using ConsoleUI.Manager;
 
