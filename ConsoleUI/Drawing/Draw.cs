@@ -15,7 +15,7 @@ namespace ConsoleUI.Drawing
             SaveCursorPos();
             Console.BackgroundColor = RectColor;
             Console.SetCursorPosition(x,y);
-            for (int i = 0; i <= h; i++)
+            for (int i = 1; i <= h; i++)
             {
                 for (int k = 0; k <= w; k++)
                 {
@@ -23,8 +23,7 @@ namespace ConsoleUI.Drawing
                 }
 
                 if (i == h)
-                {
-                    break; }
+                { break; }
                 Console.WriteLine();
                 Console.SetCursorPosition(x, y + i);
             }

@@ -24,7 +24,7 @@ namespace ConsoleTUI
             Label lbl = new Label(2,2,"Testing", pnl);
             lbl.SetTextColor(ConsoleColor.Black);
 
-            //Keys.ConsoleKeyPressed += delegate(object sender, Keys.KeyEventArgs eventArgs) { p++; lbl.SetText(p.ToString()); };
+            
 
             Button btn = new Button(2,6,20,5, pnl);
             btn.OnClick += delegate(object sender, EventArgs eventArgs) { lbl.SetText("Test#1"); };
@@ -39,6 +39,11 @@ namespace ConsoleTUI
             {
                 Label dbg = new Label(0, i, i.ToString());
             }
+
+            Footer ftr = new Footer();
+
+            Label count = new Label(Console.WindowWidth - 19, 0, "Button Count: 0", ftr);
+            Keys.ConsoleKeyPressed += delegate (object sender, Keys.KeyEventArgs eventArgs) { p++; count.SetText("Button Count:" + p); };
 
             Console.CursorVisible = false;
         }
