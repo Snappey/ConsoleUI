@@ -6,37 +6,48 @@ using ConsoleUI.Drawing;
 
 namespace ConsoleUI.Elements
 {
-    public class Button : Base
+    public class Button : Base, ISelectable
     {
         public event EventHandler OnClick;
+        public event EventHandler OnSelected;
+        public event EventHandler OnSelectedChanged;
+
         public Button(int x, int y, int w, int h, Base Parent=null)
         {
             if (Parent != null) { SetParent(Parent); }
             Paint += PaintPanel;
             SetPos(x, y);
             SetSize(w, h);
-            SetSelectable(true);
             SetBackgroundColor(ConsoleColor.Cyan);
-            OnClick += delegate(object sender, EventArgs args) { Console.Beep(); };
         }
 
         public void DoClick()
         {
-            OnClick.Invoke(this, EventArgs.Empty);
+            Console.Beep();
+            OnClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void DoSelected()
+        {
+            OnSelected?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void DoSelectedChanged()
+        {
+            OnSelectedChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            ConsoleColor col;
-            if(HasFocus)
+            if(GetFocus())
             {
-                col = ConsoleColor.DarkBlue;
+                SetBackgroundColor(ConsoleColor.DarkBlue);
             }
             else
             {
-               col = ConsoleColor.Cyan;
+                SetBackgroundColor(ConsoleColor.Cyan);
             }            
-            Draw.Rect(X, Y, W, H, col);
+            Draw.Rect(X, Y, W, H, GetBackgroundColor());
             Draw.ResetColours();
             
         }

@@ -18,7 +18,6 @@ namespace ConsoleUI.Elements
             Paint += PaintPanel;
             SetPos(x,y);
             SetText(text);
-            Selectable = false;
         }
         public ConsoleColor GetTextColor()
         {

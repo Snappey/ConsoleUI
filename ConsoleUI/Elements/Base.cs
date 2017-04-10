@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConsoleUI.Interfaces;
 using ConsoleUI.Manager;
 
 namespace ConsoleUI.Elements
@@ -11,25 +12,35 @@ namespace ConsoleUI.Elements
         public event EventHandler<PaintEventArgs> PaintOverride;
         public event EventHandler Init;
 
+        public bool Selectable = false; // Used to handle casts for key inputs
+        public bool Typable = false;
+
         public int X;
         public int Y;
-        public bool Selectable;
         public int W;
         public int H;
+
         public bool PaintManual;
         public PaintEventArgs LatestPaintEventArgs;
         public Base Parent;
         public ConsoleColor BkgColor = ConsoleColor.Black;
         public Dictionary<Base, Base> Children = new Dictionary<Base, Base>(); // Bit of a lazy way to solve this problem, Ill come back to it
 
-        public int FocusX;
-        public int FocusY;
         public bool HasFocus;
 
         protected Base()
         {
             Handler.Add(this);
             Init?.Invoke(this, EventArgs.Empty);
+
+            if (this is ISelectable)
+            {
+                SetSelectable(true);
+            }
+            if (this is ITypable)
+            {
+                SetTypable(true);
+            }
         }
 
         public Base GetParent()
@@ -101,6 +112,10 @@ namespace ConsoleUI.Elements
         {
             if (HasFocus) { return; }
             Base focusedBase = Handler.GetSelectedPanel();
+
+            var selected = focusedBase as ISelectable;
+            selected.DoSelectedChanged();
+
             focusedBase.SetFocus(false);
             SetFocus(true);
         }
@@ -126,6 +141,16 @@ namespace ConsoleUI.Elements
             {
                 Handler.SelectablePanels.Remove(this);
             }
+        }
+
+        private void SetTypable(bool typable)
+        {
+            Typable = typable;
+        }
+
+        public bool IsTypable()
+        {
+            return Typable;
         }
 
         public int GetWidth()

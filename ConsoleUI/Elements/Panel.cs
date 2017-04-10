@@ -20,7 +20,7 @@ namespace ConsoleUI.Elements
 
         public override void PaintPanel(object obj, PaintEventArgs e)
         {
-            Draw.Rect(X,Y, W,H, ConsoleColor.Gray);
+            Draw.Rect(X,Y, W,H, GetBackgroundColor());
             Draw.ResetColours();
         }
     }

@@ -21,7 +21,6 @@ namespace ConsoleUI.Drawing
                 {
                     Console.Write(" ");
                 }
-
                 if (i == h)
                 { break; }
                 Console.WriteLine();
@@ -52,8 +51,8 @@ namespace ConsoleUI.Drawing
 
         public static void ResetColours()
         {
-            Console.ForegroundColor = FOREGROUND_COLOUR;
-            Console.BackgroundColor = BACKGROUND_COLOUR;
+            //Console.ForegroundColor = FOREGROUND_COLOUR;
+            //Console.BackgroundColor = BACKGROUND_COLOUR;
         }
 
         public static void ResetConsole()
