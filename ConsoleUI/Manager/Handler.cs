@@ -48,7 +48,8 @@ namespace ConsoleUI.Manager
             Drawing.Draw.ResetConsole();
             foreach (Base pnl in Panels)
             {
-                pnl.PrePaint(pnl.LatestPaintEventArgs);
+                //pnl.PrePaint(pnl.LatestPaintEventArgs);
+                DrawElement(pnl); // Need to optimize this, 90% sure elements will be drawn more than once in one cycle
             }
         }
 
@@ -82,6 +83,7 @@ namespace ConsoleUI.Manager
 
         public static Base GetNextSelectablePanel(Base pnl)
         {
+            if (!pnl.HasFocus) { return pnl; } // A panel hasnt been selected yet
             int i = SelectablePanels.IndexOf(pnl);
             if (i+1 >= SelectablePanels.Count)
             {
