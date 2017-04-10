@@ -9,6 +9,16 @@ using ConsoleUI.Manager;
 
 namespace ConsoleUI.Elements
 {
+    public class TextEntryEventArgs : EventArgs
+    {
+        public string Value;
+
+        public TextEntryEventArgs(string val)
+        {
+            Value = val;
+        }
+    }
+
     public class TextEntry : Base, ISelectable, ITypable
     {
         public event EventHandler OnClick;
@@ -33,7 +43,8 @@ namespace ConsoleUI.Elements
 
         public void DoClick()
         {
-            OnClick?.Invoke(this, EventArgs.Empty);
+            OnClick?.Invoke(this, new TextEntryEventArgs(Contents));
+            SetContents("");
         }
 
         public void DoSelected()
@@ -71,7 +82,7 @@ namespace ConsoleUI.Elements
                 SetContents(Contents + key.Key.KeyChar); // TODO: Refactor variable naming, its getting pretty interesting..
             }                                            // TODO: Implement String stencils to only show the contents inside the rectangle drawn
             KeyPressed?.Invoke(this, new Keys.KeyEventArgs(key.Key));
-            PaintPanel(this, new PaintEventArgs());
+            PaintPanel(this, new PaintEventArgs()); // Refresh the panel when the contents is updated
         }
 
         public string GetContents()

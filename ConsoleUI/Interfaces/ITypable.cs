@@ -10,6 +10,7 @@ namespace ConsoleUI.Interfaces
     interface ITypable
     {
         event EventHandler KeyPressed;
+
         void KeyPress(Keys.KeyEventArgs key);
 
         string GetContents();
