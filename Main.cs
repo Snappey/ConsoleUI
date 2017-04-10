@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading;
-using ConsoleUI.Drawing;
 using ConsoleUI.Elements;
 using ConsoleUI.Manager;
 
@@ -13,18 +7,16 @@ namespace ConsoleTUI
     class MainEntry
     {
         static void Main(string[] args)
-        {
-            var p = 0;
+        {         
             Init();
-            Hooks.StartEvents();
-            Keys.StartKeys();
 
+            var p = 0;
             Panel pnl = new Panel(5,5,90,15);
     
             Label lbl = new Label(2,2,"Testing", pnl);
             lbl.SetTextColor(ConsoleColor.Black);
 
-            
+            TextEntry txtEntry = new TextEntry(24,2, 42, pnl);
 
             Button btn = new Button(2,6,20,5, pnl);
             btn.OnClick += delegate(object sender, EventArgs eventArgs) { lbl.SetText("Test#1"); };
@@ -53,6 +45,10 @@ namespace ConsoleTUI
             Console.BufferWidth = 120;
             Console.BufferHeight = 31;
             Console.SetWindowSize(120, 30);
+
+            Hooks.StartEvents();
+            Keys.StartKeys();
+
         }
     }
 }

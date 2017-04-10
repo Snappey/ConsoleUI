@@ -44,9 +44,11 @@
     <Compile Include="Elements\Base.cs" />
     <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\Footer.cs" />
+    <Compile Include="Interfaces\ISelectable.cs" />
     <Compile Include="Elements\Label.cs" />
     <Compile Include="Elements\Panel.cs" />
     <Compile Include="Elements\TextEntry.cs" />
+    <Compile Include="Interfaces\ITypable.cs" />
     <Compile Include="Manager\Hooks.cs" />
     <Compile Include="Manager\Keys.cs" />
     <Compile Include="Manager\Handler.cs" />
